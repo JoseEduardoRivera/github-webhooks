@@ -23,18 +23,18 @@ export class GithubService {
     onIssue(payload:GitHubIssuePayload):string {
         let message:string = '';
 
-        const { action, issue } = payload;
+        const { action, issue, repository } = payload;
 
         if (action === 'oppened') {
             message  = `An Issue was oppened with title ${issue.title}`
             return message;
         }
         if (action === 'closed') {
-            message  = `An Issue was closed by ${issue.user.login} with title ${issue.title}`
+            message  = `An Issue was closed by ${issue.user.login} with title ${issue.title} on ${repository.full_name}`
             return message;
         }
         if (action === 'reopened') {
-            message  = `An Issue was reopened by ${issue.user.login} with title ${issue.title}`
+            message  = `An Issue was reopened by ${issue.user.login} with title ${issue.title} on ${repository.full_name}`
             return message;
         }
 
